@@ -2,6 +2,7 @@ package com.example.mid.data.source
 
 import com.example.mid.data.MainData
 import com.example.mid.data.RepoData
+import com.example.mid.data.source.local.MainDataLocalSource
 
 class MainDataRepository(
     val remoteDataSource: MainDataSource,
@@ -46,6 +47,7 @@ class MainDataRepository(
         @JvmStatic
         fun getInstance(
             mainDataRemoteSource: MainDataSource,
+            instance: MainDataLocalSource?,
         ) =
             INSTANCE ?: synchronized(MainDataRepository::class.java) {
                 INSTANCE ?: MainDataRepository(mainDataRemoteSource, mainDataRemoteSource)
